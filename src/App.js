@@ -65,14 +65,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   // eslint-disable-next-line
   const [error, setError] = useState(null);
-  const [state, setState] = useState({text: "", icon: "alarm_blue.svg"});
+  const [state, setState] = useState({text: "", icon: "/alarm_blue.svg"});
 
   useEffect(() => {
     if (data.length > 0){
       if (data[7] === 0){
-        setState({text: "正常", icon: "alarm_blue.svg"})
+        setState({text: "正常", icon: "/alarm_blue.svg"})
       } else if (data[7] === 1){
-        setState({text: "报警", icon: "alarm_red.svg"})
+        setState({text: "报警", icon: "/alarm_red.svg"})
       }
     }
   }, [data]);
@@ -160,42 +160,42 @@ function App() {
           <Row gutter={[8, 8]}>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/temperature.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="温度" value={data[0]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/temperature.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"°"} title="温度" value={data[0]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/humid.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="湿度" value={data[1]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/humid.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"%"} title="湿度" value={data[1]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/voltage.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="电压" value={data[2]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/voltage.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"V"} title="电压" value={data[2]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/electric.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="电流" value={data[3]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/electric.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"A"} title="电流" value={data[3]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/louelectric.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="漏电流" value={data[4]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/louelectric.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"mA"} title="漏电流" value={data[4]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/yougong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="有功功率" value={data[5]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/yougong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"W"} title="有功功率" value={data[5]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src="/wugong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="无功功率" value={data[6]} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src="/wugong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"VAR"} title="无功功率" value={data[6]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
             <Col span={12}>
             <Card style={{minWidth: "225px"}}>
-              <Statistic loading={loading} prefix={<img src={state.icon} alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="状态" value={state} valueStyle={{lineHeight: "1"}} />
+              <Statistic loading={loading} prefix={<img src={state.icon} alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="状态" value={state.text} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
           </Row>
