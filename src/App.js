@@ -1,5 +1,5 @@
 import { Col, Row, Statistic, Layout, ConfigProvider, Card } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { fetchOrgs, fetchGrouplist, fetchDevices, fetchDeviceState, fetchDevicePacket } from './api';
 import './App.css';
 const { Content } = Layout;
@@ -66,6 +66,7 @@ function App() {
   // eslint-disable-next-line
   const [error, setError] = useState(null);
   const [state, setState] = useState({text: "", icon: "/alarm_blue.svg"});
+  const abortControllerRef = useRef(null);
 
   useEffect(() => {
     if (data.length > 0){
@@ -79,6 +80,15 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
+      // 取消之前的请求（如果存在）
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      
+      // 创建新的 AbortController
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
       try {
         const orgs = await fetchOrgs();
         if (orgs.data.code !== 200) {
@@ -131,6 +141,14 @@ function App() {
     };
 
     getData();
+    const intervalId = setInterval(getData, 2000);
+    // 清理函数
+    return () => {
+      clearInterval(intervalId);
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
   }, []);
 
   if (error !== null) {
