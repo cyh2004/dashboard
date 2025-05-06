@@ -175,23 +175,13 @@ function App() {
             },
           }}
         >
-          <Row>
+          <Row gutter={[8, 8]}>
             <Col span={8} offset={8}>
               <Card style={{minWidth: "225px"}}>
                 <Statistic loading={loading} prefix={<img src={state.icon} alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} title="状态" value={state.text} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
-          </Row>
-          <Row gutter={[8, 8]}>
             <Col span={8}>
-              <Card style={{minWidth: "225px"}}>
-                <Statistic loading={loading} prefix={<img src="/temperature.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"°"} title="温度" value={data[0]} valueStyle={{lineHeight: "1"}} />
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card style={{minWidth: "225px"}}>
-                <Statistic loading={loading} prefix={<img src="/humid.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"%"} title="湿度" value={data[1]} valueStyle={{lineHeight: "1"}} />
-              </Card>
             </Col>
             <Col span={8}>
               <Card style={{minWidth: "225px"}}>
@@ -208,7 +198,7 @@ function App() {
                 <Statistic loading={loading} prefix={<img src="/louelectric.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"mA"} title="漏电流" value={data[4]} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} offset={4}>
               <Card style={{minWidth: "225px"}}>
                 <Statistic loading={loading} prefix={<img src="/yougong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"W"} title="有功功率" value={data[5]} valueStyle={{lineHeight: "1"}} />
               </Card>
@@ -218,23 +208,33 @@ function App() {
                 <Statistic loading={loading} prefix={<img src="/wugong.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"VAR"} title="无功功率" value={data[6]} valueStyle={{lineHeight: "1"}} />
             </Card>
             </Col>
-            <Col span={8}>
+            <Col span={8} offset={4}>
               <Card style={{minWidth: "225px"}}>
+                <Statistic loading={loading} prefix={<img src="/temperature.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"°"} title="温度" value={data[0]} valueStyle={{lineHeight: "1"}} />
+              </Card>
+            </Col>
+            <Col span={8} offset={0}>
+              <Card style={{minWidth: "225px"}}>
+                <Statistic loading={loading} prefix={<img src="/humid.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"%"} title="湿度" value={data[1]} valueStyle={{lineHeight: "1"}} />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card style={{minWidth: "200px"}}>
                 <Statistic loading={loading} prefix={<img src="/voltage-bar.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"V"} title="电压阈值" value={data[8]} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
-            <Col span={8}>
-              <Card style={{minWidth: "225px"}}>
+            <Col span={6}>
+              <Card style={{minWidth: "200px"}}>
                 <Statistic loading={loading} prefix={<img src="/electric-bar.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"A"} title="电流阈值" value={data[9]} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
-            <Col span={8}>
-              <Card style={{minWidth: "225px"}}>
+            <Col span={6}>
+              <Card style={{minWidth: "200px"}}>
                 <Statistic loading={loading} prefix={<img src="/louelectric-bar.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"mA"} title="漏电流阈值" value={data[10]} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
-            <Col span={8}>
-              <Card style={{minWidth: "225px"}}>
+            <Col span={6}>
+              <Card style={{minWidth: "200px"}}>
                 <Statistic loading={loading} prefix={<img src="/wencha-bar.svg" alt="Icon" style={{width: "36px", height: "36px", verticalAlign: "top"}}></img>} suffix={"°"} title="温差阈值" value={data[11]} valueStyle={{lineHeight: "1"}} />
               </Card>
             </Col>
