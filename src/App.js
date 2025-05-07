@@ -128,15 +128,21 @@ function App() {
         if (devicePacket.data.data.total_item <= 0) {
           throw new Error(`未收到数据`);
         }
-        let json_str = hexToString(devicePacket.data.data.items[0].hex_packet);
-        console.log(json_str);
-        let array = parseStringToArray(json_str);
-        console.log(array);
-        setData(array);
+        try {
+          let json_str = hexToString(devicePacket.data.data.items[0].hex_packet);
+          console.log(json_str);
+          let array = parseStringToArray(json_str);
+          console.log(array);
+          setData(array);
+        } catch (err) {
+
+        }
       } catch (err) {
         setError(err.message || '请求失败');
       } finally {
-        setLoading(false);
+        if(data.length != 0){
+          setLoading(false);
+        }
       }
     };
 
