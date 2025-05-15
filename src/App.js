@@ -140,14 +140,14 @@ function App() {
       } catch (err) {
         setError(err.message || '请求失败');
       } finally {
-        if(data.length != 0){
+        if(data.length !== 0){
           setLoading(false);
         }
       }
     };
 
     getData();
-    const intervalId = setInterval(getData, 2000);
+    const intervalId = setInterval(getData, 5000);
     // 清理函数
     return () => {
       clearInterval(intervalId);
@@ -155,7 +155,7 @@ function App() {
         abortControllerRef.current.abort();
       }
     };
-  }, []);
+  }, [data.length]);
 
   if (error !== null) {
     return <div>请求失败: {error}</div>;
